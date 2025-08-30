@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - VelariForge</title>
+    <meta name="description"
+        content="Discover and shop premium daggers at VelariForge. Explore our collection of tactical, ceremonial, and collector's blades. Secure checkout and worldwide shipping.">
+    <meta name="keywords"
+        content="daggers, premium daggers, tactical knives, collector blades, VelariForge, buy daggers, knife shop">
+    <meta name="author" content="VelariForge">
+    <meta property="og:title" content="Products - VelariForge">
+    <meta property="og:description"
+        content="Discover and shop premium daggers at VelariForge. Explore our collection of tactical, ceremonial, and collector's blades.">
+    <meta property="og:image" content="/image6.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://velariforge.com/product.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Products - VelariForge">
+    <meta name="twitter:description"
+        content="Discover and shop premium daggers at VelariForge. Explore our collection of tactical, ceremonial, and collector's blades.">
+    <meta name="twitter:image" content="/image6.jpg">
+    <link rel="icon" type="image/png" href="velariforge.png">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="/script.js"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=USD"></script>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav"
+            style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; width: 100%;">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <span class="mobile-list-icon" id="mobileMenuIcon" style="margin-right:0.7rem; background:none;">
+                    <svg viewBox="0 0 32 32" width="36" height="36" style="display:block;">
+                        <path d="M6 9h20M6 16h20M6 23h20" stroke="#C68346" stroke-width="3" stroke-linecap="round" />
+                    </svg>
+                </span>
+                <a href="index.html" class="logo" style="display:flex;align-items:center;gap:0.5rem;">
+                    <img src="V-removebg-preview.png" alt="velari_forge logo"
+                        style="width:40px;height:40px;object-fit:contain;" />
+                    <span style="font-size:1.5rem;color:#C68346;font-weight:bold;">Velari Forge</span>
+                </a>
+            </div>
+            <ul class="nav-links" id="navLinks" style="display: flex; gap: 1.5rem; list-style: none; margin: 0;">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="product.html">Product</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="cart-icon" onclick="toggleCart()"
+                style="font-size:1.5rem; color:#C68346; cursor:pointer; margin-left: 2rem; position: static;">
+                🛒
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </nav>
+    </header>
+    <script>if (typeof setupMobileNav === 'function') setupMobileNav();</script>
+    <section class="products" id="products">
+        <h2 class="section-title">All Products</h2>
+        <div class="filter-bar" id="filterBar">
+            <label for="categoryFilter" style="display:none;">Filter by category</label>
+            <select id="categoryFilter" aria-label="Filter by category">
+                <option value="all">All Categories</option>
+            </select>
+            <label for="priceFilter" style="display:none;">Filter by price</label>
+            <select id="priceFilter" aria-label="Filter by price">
+                <option value="all">All Prices</option>
+                <option value="low">Low to High</option>
+                <option value="high">High to Low</option>
+            </select>
+        </div>
+        <div style="max-width: 400px; margin: 0 auto 2rem;">
+            <label for="searchInput" style="display:none;">Search products</label>
+            <input type="text" id="searchInput" placeholder="Search products..." aria-label="Search products"
+                style="width:100%;padding:0.8rem;border-radius:8px;border:1.5px solid #C68346;background:rgba(255,255,255,0.15);color:#fff;">
+        </div>
+        <div class="product-grid" id="productGrid" aria-live="polite">
+            <!-- Products will be dynamically loaded here -->
+        </div>
+    </section>
+    <div class="cart-modal" id="cartModal" aria-modal="true" role="dialog">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3 class="cart-title">Shopping Cart</h3>
+                <button class="close-cart" onclick="toggleCart()" aria-label="Close cart" tabindex="0">&times;</button>
+            </div>
+            <div id="cartItems"></div>
+            <div class="cart-total" id="cartTotal">Total: $0.00</div>
+            <button class="checkout-btn" onclick="checkout()" aria-label="Proceed to Checkout" tabindex="0">Proceed to
+                Checkout</button>
+            <button class="checkout-btn" onclick="openBulkOrderModal()"
+                style="background:linear-gradient(45deg,#635bff,#00bfae);margin-top:0.5rem;"
+                aria-label="Request Bulk Order" tabindex="0">
+                <i class="fas fa-warehouse"></i> Request Bulk Order
+            </button>
+
+        </div>
+    </div>
+    <div class="quick-view-modal" id="quickViewModal" aria-modal="true" role="dialog">
+        <div class="quick-view-content" id="quickViewContent">
+            <!-- Quick view content will be injected here -->
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="Privacy Policy.html">Privacy Policy</a>
+                <a href="Terms of Service.html">Terms of Service</a>
+                <a href="Shipping Info.html">Shipping Info</a>
+                <a href="Returns.html">Returns</a>
+            </div>
+            <div style="margin: 1.5rem 0;">
+                <a href="https://www.facebook.com/profile.php?id=61559348871898" target="_blank" aria-label="Facebook"
+                    style="margin:0 0.7rem;color:#C68346;font-size:1.7rem;vertical-align:middle;"><i
+                        class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/velari_forge?igsh=dDEzYzg5NXR1MzR2" target="_blank"
+                    style="margin:0 0.7rem;color:#C68346;font-size:1.7rem;vertical-align:middle;"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://.com" target="_blank" aria-label="TikTok"
+                    style="margin:0 0.7rem;color:#C68346;font-size:1.7rem;vertical-align:middle;"><i
+                        class="fab fa-tiktok"></i></a>
+            </div>
+            <p>&copy; 2025 Velari Forge. All rights reserved. </p>
+        </div>
+    </footer>
+
+    <!-- Add this BULK ORDER MODAL right before the closing </body> tag in both index.html and product.html -->
+
+    <!-- Bulk Order Modal -->
+    <div id="bulkOrderModal"
+        style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.7);z-index:3000;justify-content:center;align-items:center;">
+        <div
+            style="background:#181828;padding:2rem 2.5rem;border-radius:18px;max-width:500px;width:95vw;position:relative;max-height:90vh;overflow-y:auto;">
+            <button onclick="closeBulkOrderModal()" aria-label="Close bulk order modal"
+                style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:#C68346;font-size:2rem;cursor:pointer;">&times;</button>
+            <h3 style="color:#C68346;margin-bottom:1.2rem;">Bulk Order Request</h3>
+            <p style="color:#fff;margin-bottom:1.5rem;">Looking to order in bulk? Fill out this form and we'll get back
+                to you with special pricing!</p>
+
+            <form id="bulkOrderForm" autocomplete="off" novalidate>
+                <div class="form-group">
+                    <label for="bulkCompanyName">Company Name (Optional)</label>
+                    <input type="text" id="bulkCompanyName" placeholder="Your company name">
+                </div>
+                <div class="form-group">
+                    <label for="bulkContactName">Contact Name</label>
+                    <input type="text" id="bulkContactName" required placeholder="Your full name">
+                </div>
+                <div class="form-group">
+                    <label for="bulkEmail">Email Address</label>
+                    <input type="email" id="bulkEmail" required placeholder="Your email address">
+                </div>
+                <div class="form-group">
+                    <label for="bulkPhone">Phone Number</label>
+                    <input type="tel" id="bulkPhone" required placeholder="Your phone number">
+                </div>
+                <div class="form-group">
+                    <label for="bulkProducts">Products of Interest</label>
+                    <textarea id="bulkProducts" rows="3" required
+                        placeholder="Which products are you interested in? Include quantities if known."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="bulkQuantity">Estimated Quantity</label>
+                    <select id="bulkQuantity" required>
+                        <option value="">Select quantity range</option>
+                        <option value="10-50">10-50 units</option>
+                        <option value="51-100">51-100 units</option>
+                        <option value="101-500">101-500 units</option>
+                        <option value="500+">500+ units</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="bulkTimeframe">Required Timeframe</label>
+                    <select id="bulkTimeframe" required>
+                        <option value="">Select timeframe</option>
+                        <option value="urgent">ASAP (Rush order)</option>
+                        <option value="1-2weeks">1-2 weeks</option>
+                        <option value="1month">Within 1 month</option>
+                        <option value="flexible">Flexible timing</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="bulkMessage">Additional Requirements/Message</label>
+                    <textarea id="bulkMessage" rows="4"
+                        placeholder="Any special requirements, customization needs, shipping preferences, etc."></textarea>
+                </div>
+
+                <div id="bulkOrderError"
+                    style="display:none;color:#ff4444;margin-bottom:1rem;text-align:center;font-weight:bold;"></div>
+                <button type="submit" class="submit-order" style="margin-top:0.5rem;width:100%;">Submit Bulk Order
+                    Request</button>
+            </form>
+
+            <div id="bulkOrderSuccess"
+                style="display:none;color:#C68346;margin-top:1.5rem;text-align:center;font-weight:bold;">
+                Thank you for your bulk order request! We'll contact you within 24 hours with a custom quote.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('searchInput').addEventListener('input', function () {
+            if (typeof applyFilters === 'function') applyFilters();
+        });
+        document.getElementById('priceFilter').addEventListener('change', function () {
+            if (typeof applyFilters === 'function') applyFilters();
+        });
+
+        // Replace payWithStripe with real Stripe Checkout integration
+        function payWithStripe() {
+            // Replace with your real Stripe publishable key
+            var stripe = Stripe('pk_test_XXXXXXXXXXXXXXXXXXXXXXXX');
+            stripe.redirectToCheckout({
+                lineItems: cart.map(item => ({
+                    price_data: {
+                        currency: 'usd',
+                        product_data: {
+                            name: item.name,
+                            description: item.description,
+                            images: [window.location.origin + '/' + item.image]
+                        },
+                        unit_amount: Math.round(item.price * 100)
+                    },
+                    quantity: item.quantity
+                })),
+                mode: 'payment',
+                successUrl: window.location.origin + '/success.html',
+                cancelUrl: window.location.href
+            }).then(function (result) {
+                if (result.error) {
+                    showNotification(result.error.message, 'info');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

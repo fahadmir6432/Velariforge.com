@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #fff;
+        }
+
+        main {
+            padding-top: 100px;
+        }
+
+        .product-detail-container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            gap: 40px;
+            background-color: #222;
+            border-radius: 10px;
+        }
+
+        .product-detail-image {
+            flex: 0 1 450px;
+            /* Prevents the image from growing too large on desktop */
+            max-width: 450px;
+            /* Sets a hard limit on the image width */
+        }
+
+        .product-detail-image img {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .product-detail-info {
+            flex: 1 1 400px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #C68346;
+            margin-bottom: 15px;
+            text-transform: capitalize;
+        }
+
+        .product-price {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #C68346;
+            margin-bottom: 20px;
+        }
+
+        .product-rating {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .product-rating .stars {
+            color: #C68346;
+            margin-right: 10px;
+        }
+
+        .product-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #e0e0e0;
+            margin-bottom: 30px;
+            display: block !important;
+            visibility: visible !important;
+            height: auto !important;
+            opacity: 1 !important;
+        }
+
+        .add-to-cart-btn {
+            background-color: #C68346;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: auto;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #a06937;
+        }
+
+        /* Modal overlay styles */
+        .image-page-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #181818cc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        /* --- UPDATED MEDIA QUERY FOR MOBILE --- */
+        @media (max-width: 768px) {
+            .product-detail-container {
+                flex-direction: column;
+                /* Stack image and info vertically */
+                margin: 15px;
+                padding: 15px;
+                gap: 25px;
+                /* Reduce gap for mobile */
+            }
+
+            /* Let the image take the full width on mobile */
+            .product-detail-image {
+                max-width: 100%;
+            }
+
+            /* Center-align text for a cleaner mobile view */
+            .product-detail-info {
+                text-align: center;
+            }
+
+            .product-name {
+                font-size: 2rem;
+            }
+
+            .product-price {
+                font-size: 1.8rem;
+            }
+
+            /* Center the rating stars */
+            .product-rating {
+                justify-content: center;
+            }
+
+            /* Make the button full-width for easier tapping */
+            .add-to-cart-btn {
+                width: 100%;
+            }
+        }
+
+        .product-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #e0e0e0;
+            margin-bottom: 30px;
+            display: block !important;
+            visibility: visible !important;
+            height: auto !important;
+            opacity: 1 !important;
+        }
+
+        /* --- REPLACE OLD BUTTON STYLES WITH THIS BLOCK --- */
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            /* Consistent space between buttons */
+            margin-top: auto;
+            /* Pushes buttons to the bottom */
+        }
+
+        /* Unified style for both buttons */
+        .add-to-cart-btn,
+        .bulk-order-btn {
+            padding: 15px 20px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+            border: 2px solid transparent;
+            /* Prevents size shift on hover */
+        }
+
+        .add-to-cart-btn {
+            background-color: #C68346;
+            color: white;
+            border-color: #C68346;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #a06937;
+            border-color: #a06937;
+        }
+
+        .bulk-order-btn {
+            background-color: transparent;
+            color: #C68346;
+            border-color: #C68346;
+        }
+
+        .bulk-order-btn:hover {
+            background-color: #C68346;
+            color: white;
+        }
+
+        /* --- END OF REPLACEMENT BLOCK --- */
+
+        /* Modal overlay styles */
+        /* --- INSIDE THE @media (max-width: 768px) BLOCK --- */
+        @media (max-width: 768px) {
+
+            /* ... existing mobile styles ... */
+            .add-to-cart-btn,
+            .bulk-order-btn {
+                width: 100%;
+                /* Make BOTH buttons full-width on mobile */
+            }
+        }
+
+
+        /* --- CSS for the New Bulk Order Modal --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            /* Hidden by default */
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+        }
+
+        .modal-content {
+            background: #2a2a2a;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+            width: 90%;
+            max-width: 550px;
+            position: relative;
+            color: #e0e0e0;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .modal-content h2 {
+            color: #C68346;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .modal-content p {
+            text-align: center;
+            margin-bottom: 25px;
+            opacity: 0.8;
+        }
+
+        .modal-content .form-group {
+            margin-bottom: 15px;
+        }
+
+        .modal-content label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .modal-content input,
+        .modal-content textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background: #1e1e1e;
+            color: #fff;
+        }
+
+        .modal-content .submit-btn {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            background-color: #C68346;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .modal-content .submit-btn:hover {
+            background-color: #a06937;
+        }
+
+        .success-message,
+        .error-message {
+            display: none;
+            /* Hidden by default */
+            text-align: center;
+            padding: 20px;
+        }
+
+        .success-message h3 {
+            color: #28a745;
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        /* --- ADD THIS BLOCK FOR THE NEW DIRECT BULK ORDER MODAL --- */
+.bulk-modal-content {
+    max-width: 700px; /* A bit wider for a better layout */
+    padding: 25px;
+}
+
+#bulkModalBody {
+    display: flex;
+    gap: 30px;
+}
+
+.bulk-modal-image {
+    flex: 0 0 220px; /* Fixed width for the image */
+}
+
+.bulk-modal-image img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+.bulk-modal-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.bulk-modal-details h3 {
+    font-size: 2rem;
+    color: #C68346;
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-transform: capitalize;
+}
+
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.quantity-selector label {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.quantity-selector input[type="number"] {
+    width: 70px;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 8px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background: #1e1e1e;
+    color: #fff;
+}
+
+.price-display {
+    background: #1e1e1e;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    border-left: 4px solid #C68346;
+}
+
+.price-display div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.price-display .original-price {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.price-display .discounted-price {
+    color: #28a745; /* Green for discount */
+    font-weight: bold;
+}
+
+.price-display .total-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #C68346;
+    border-top: 1px solid #444;
+    padding-top: 12px;
+    margin-top: 12px;
+}
+
+.bulk-modal-details .submit-btn {
+    margin-top: auto; /* Pushes button to the bottom */
+    width: 100%;
+    padding: 12px;
+    background-color: #C68346;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.bulk-modal-details .submit-btn:hover {
+    background-color: #a06937;
+}
+
+@media (max-width: 600px) {
+    #bulkModalBody {
+        flex-direction: column;
+    }
+    .bulk-modal-image {
+        max-width: 250px;
+        margin: 0 auto;
+    }
+}
+ 
+.slider-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+}
+.slider-arrow {
+    background: #C68346;
+    color: #fff;
+    border: none;
+    font-size: 2rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0.85;
+    transition: background 0.2s;
+}
+.slider-arrow:disabled {
+    background: #555;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+.slider-container img {
+    max-width: 350px;
+    max-height: 400px;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 2px 12px #000a;
+}
+.scroll-desc {
+    max-height: 180px;
+    overflow-y: auto;
+    padding-right: 8px;
+    margin-bottom: 30px;
+    background: #181818;
+    border-radius: 6px;
+}
+
+
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav"
+            style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; width: 100%;">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <span class="mobile-list-icon" id="mobileMenuIcon" style="margin-right:0.7rem; background:none;">
+                    <svg viewBox="0 0 32 32" width="36" height="36" style="display:block;">
+                        <path d="M6 9h20M6 16h20M6 23h20" stroke="#C68346" stroke-width="3" stroke-linecap="round" />
+                    </svg>
+                </span>
+                <a href="index.html" class="logo" style="display:flex;align-items:center;gap:0.5rem;">
+                    <img src="V-removebg-preview.png" alt="velari_forge logo"
+                        style="width:40px;height:40px;object-fit:contain;" />
+                    <span style="font-size:1.5rem;color:#C68346;font-weight:bold;">Velari Forge</span>
+                </a>
+            </div>
+            <ul class="nav-links" id="navLinks" style="display: flex; gap: 1.5rem; list-style: none; margin: 0;">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="product.html">Product</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="header-search-container"
+                style="display: flex; align-items: center; gap: 0.5rem; max-width: 260px; width: 100%; margin-left: 2rem;font-size: 2rem;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-search"
+                    viewBox="0 0 16 16" style="color:#C68346;">
+                    <path
+                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                </svg>
+                <label for="searchInput" style="display:none;">Search products</label>
+                <input type="text" id="searchInput" placeholder="Search products..." aria-label="Search products"
+                    style="width:150px;padding:0.8rem;border-radius:8px;border:1.5px solid #C68346;background:rgba(255,255,255,0.15);color:#fff;">
+            </div>
+            <div class="cart-icon" onclick="toggleCart()"
+                style="font-size:1.5rem; color:#C68346; cursor:pointer; margin-left: 2rem; position: static;">
+                🛒
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </nav>
+    </header>
+    <script>if (typeof setupMobileNav === 'function') setupMobileNav();</script>
+    <main>
+        <div id="product-detail" class="product-detail-container">
+            <!-- Product details will be loaded here by JavaScript -->
+        </div>
+    </main>
+
+    <!-- Cart Modal -->
+    <div id="cartModal"
+        style="display:none; position:fixed; top:0; right:0; width:400px; max-width:95vw; height:100vh; background:#222; box-shadow:-8px 0 32px #000a; z-index:12001; border-top-left-radius:18px; border-bottom-left-radius:18px; overflow-y:auto;">
+        <div style="padding:1.5rem;">
+            <h2 style="color:#C68346;">Your Cart</h2>
+            <div id="cartItems"></div>
+            <div id="cartTotal" style="margin-top:1rem; font-weight:bold; color:#C68346;"></div>
+            <button onclick="checkout()"
+                style="margin-top:1rem; background:#C68346; color:#fff; border:none; border-radius:8px; padding:0.7rem 1.2rem; cursor:pointer;">Checkout</button>
+            <button onclick="toggleCart()"
+                style="margin-top:1.5rem; background:#C68346; color:#fff; border:none; border-radius:8px; padding:0.7rem 1.2rem; cursor:pointer;">Close
+                Cart</button>
+        </div>
+    </div>
+
+
+    <!-- Bulk Order Modal -->
+    <div id="bulkOrderModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeBulkOrderModal()">&times;</button>
+            <h2>Bulk Order Inquiry</h2>
+            <p>For orders of 5 or more items. Please fill out the form below and we'll get back to you with a quote.</p>
+
+            <form id="bulkOrderForm">
+                <div class="form-group">
+                    <label for="bulkContactName">Full Name*</label>
+                    <input type="text" id="bulkContactName" required>
+                </div>
+                <div class="form-group">
+                    <label for="bulkEmail">Email Address*</label>
+                    <input type="email" id="bulkEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="bulkPhone">Phone Number*</label>
+                    <input type="tel" id="bulkPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="bulkProducts">Dagger(s) of Interest*</label>
+                    <textarea id="bulkProducts" rows="3" required
+                        placeholder="e.g., Serpent's Fang Dagger, Crimson Talon..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="bulkQuantity">Estimated Quantity*</label>
+                    <input type="number" id="bulkQuantity" min="10" value="10" required>
+                </div>
+                <div class="form-group">
+                    <label for="bulkMessage">Additional Details</label>
+                    <textarea id="bulkMessage" rows="3"
+                        placeholder="Any specific requirements or questions?"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Inquiry</button>
+            </form>
+
+            <div id="bulkOrderSuccess" class="success-message">
+                <h3>Thank You!</h3>
+                <p>Your inquiry has been sent. We will contact you shortly.</p>
+            </div>
+            <div id="bulkOrderError" class="error-message"></div>
+        </div>
+    </div>
+
+    <!-- Direct Bulk Order Modal -->
+    <div id="directBulkModal" class="modal-overlay">
+        <div class="modal-content bulk-modal-content">
+            <button class="modal-close" onclick="closeDirectBulkModal()">&times;</button>
+            <!-- The content of this modal will be dynamically injected by JavaScript -->
+            <div id="bulkModalBody"></div>
+        </div>
+    </div>
+
+
+
+    <script src="script.js"></script>
+
+    <script>
+        window.onload = function () {
+    const productDetailContainer = document.getElementById('product-detail');
+    if (typeof products === 'undefined') {
+        productDetailContainer.innerHTML = '<p>Error: Core script not loaded.</p>';
+        return;
+    }
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = parseInt(urlParams.get('id'), 10);
+    const product = products.find(p => p.id === productId);
+
+    if (product) {
+        // Support both product.images (array) and product.image (string)
+        const images = Array.isArray(product.images) ? product.images : [product.image];
+        let currentIndex = 0;
+
+        function renderSlider() {
+            productDetailContainer.innerHTML = `
+                <div class="product-detail-image">
+                    <div class="slider-container">
+                        <button class="slider-arrow left" ${currentIndex === 0 ? 'disabled' : ''}>&lt;</button>
+                        <img src="${images[currentIndex]}" alt="${product.name}">
+                        <button class="slider-arrow right" ${currentIndex === images.length - 1 ? 'disabled' : ''}>&gt;</button>
+                    </div>
+                </div>
+                <div class="product-detail-info">
+                    <h1 class="product-name">${product.name}</h1>
+                    <div class="product-price">$${product.price.toFixed(2)}</div>
+                    <div class="product-rating">
+                        <span class="stars">${typeof renderStars === 'function' ? renderStars(getProductRating(product.id)) : ''}</span>
+                        <span class="rating-value">(${typeof getProductRating === 'function' ? getProductRating(product.id).toFixed(1) : ''})</span>
+                    </div>
+                    <div class="product-description scroll-desc">${product.description}</div>
+                    <div class="button-group" style="margin-top: auto;">
+                        <button class="add-to-cart-btn" onclick="addToCart(${product.id})">Add to Cart</button>
+                        <button class="bulk-order-btn" onclick="openDirectBulkModal(${product.id})">Buy in Bulk</button>
+                    </div>
+                </div>
+            `;
+
+            // Add slider event listeners
+            const leftBtn = productDetailContainer.querySelector('.slider-arrow.left');
+            const rightBtn = productDetailContainer.querySelector('.slider-arrow.right');
+            if (leftBtn) leftBtn.onclick = () => { if (currentIndex > 0) { currentIndex--; renderSlider(); } };
+            if (rightBtn) rightBtn.onclick = () => { if (currentIndex < images.length - 1) { currentIndex++; renderSlider(); } };
+        }
+
+        renderSlider();
+    } else {
+        productDetailContainer.innerHTML = `<p>Product not found.</p>`;
+    }
+};
+
+        function openImageOverlay(imageSrc) {
+            const overlay = document.createElement('div');
+            overlay.className = 'image-page-modal';
+            overlay.style.cssText = `position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center; z-index: 9999; cursor: pointer;`;
+            overlay.innerHTML = `<img src="${imageSrc}" alt="Product image" style="max-height: 90%; max-width: 90%; object-fit: contain; border-radius: 8px;">`;
+            overlay.addEventListener('click', () => overlay.remove());
+            document.body.appendChild(overlay);
+        }
+    </script>
+</body>
+</html>

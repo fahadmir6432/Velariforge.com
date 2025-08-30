@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Dagger Design - VelariForge</title>
+    <meta name="description"
+        content="Design your own custom dagger at VelariForge. Choose blade type, materials, engravings, and more to create your perfect blade.">
+    <meta name="keywords"
+        content="custom dagger, personalized blade, VelariForge, custom knife design, bespoke daggers">
+    <meta name="author" content="VelariForge">
+    <meta property="og:title" content="Custom Dagger Design - VelariForge">
+    <meta property="og:description"
+        content="Design your own custom dagger at VelariForge. Choose blade type, materials, engravings, and more to create your perfect blade.">
+    <meta property="og:image" content="/image6.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://velariforge.com/customisedesign.html">
+    <link rel="icon" type="image/png" href="velariforge.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav"
+            style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; width: 100%;">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <span class="mobile-list-icon" id="mobileMenuIcon" style="margin-right:0.7rem; background:none;">
+                    <svg viewBox="0 0 32 32" width="36" height="36" style="display:block;">
+                        <path d="M6 9h20M6 16h20M6 23h20" stroke="#C68346" stroke-width="3" stroke-linecap="round" />
+                    </svg>
+                </span>
+                <a href="index.html" class="logo" style="display:flex;align-items:center;gap:0.5rem;">
+                    <img src="V-removebg-preview.png" alt="velari_forge logo"
+                        style="width:40px;height:40px;object-fit:contain;" />
+                    <span style="font-size:1.5rem;color:#C68346;font-weight:bold;">Velari Forge</span>
+                </a>
+            </div>
+            <ul class="nav-links" id="navLinks" style="display: flex; gap: 1.5rem; list-style: none; margin: 0;">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="product.html">Product</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="customisedesign.html" class="active">Custom Design</a></li>
+            </ul>
+        </nav>
+    </header>
+    <script>if (typeof setupMobileNav === 'function') setupMobileNav();</script>
+<main>
+    <!-- Custom Design Section -->
+    <section class="products" style="padding-top: 2rem; min-height: 100vh;">
+        <h2 class="section-title">Design Your Perfect Dagger</h2>
+        <p style="text-align: center; color: #C68346; margin-bottom: 3rem; font-size: 1.2rem;">
+            Create a one-of-a-kind blade tailored to your vision
+        </p>
+
+        <div class="custom-design-container" style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 400px; gap: 3rem; padding: 0 2rem;">
+            
+            <!-- Customization Form -->
+            <div class="customization-panel" style="background: rgba(255,255,255,0.07); padding: 2.5rem; border-radius: 20px;">
+                <form id="customDesignForm" style="display: grid; gap: 2rem;">
+                    
+                    <!-- Step 1: Blade Type -->
+                    <div class="design-step">
+                        <h3 style="color: #C68346; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="step-number">1</span>
+                            Choose Blade Type
+                        </h3>
+                        <div class="blade-options" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                            <label class="option-card" data-price="0">
+                                <input type="radio" name="bladeType" value="tactical" required>
+                                <div class="card-content">
+                                    <h4>Tactical Dagger</h4>
+                                    <p>Modern combat design with reinforced spine</p>
+                                    <span class="price">Base Price</span>
+                                </div>
+                            </label>
+                            <label class="option-card" data-price="50">
+                                <input type="radio" name="bladeType" value="ceremonial" required>
+                                <div class="card-content">
+                                    <h4>Ceremonial Blade</h4>
+                                    <p>Elegant design for display and ceremony</p>
+                                    <span class="price">+$50</span>
+                                </div>
+                            </label>
+                            <label class="option-card" data-price="75">
+                                <input type="radio" name="bladeType" value="historical" required>
+                                <div class="card-content">
+                                    <h4>Historical Replica</h4>
+                                    <p>Authentic historical design recreation</p>
+                                    <span class="price">+$75</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Blade Material -->
+                    <div class="design-step">
+                        <h3 style="color: #C68346; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="step-number">2</span>
+                            Select Blade Material
+                        </h3>
+                        <div class="material-options" style="display: grid; gap: 0.8rem;">
+                            <label class="material-option" data-price="0">
+                                <input type="radio" name="bladeMaterial" value="carbon-steel" required>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div>
+                                        <strong>Carbon Steel</strong>
+                                        <p style="margin: 0.2rem 0 0 0; font-size: 0.9rem; opacity: 0.8;">Durable and sharp, traditional choice</p>
+                                    </div>
+                                    <span class="price">Included</span>
+                                </div>
+                            </label>
+                            <label class="material-option" data-price="100">
+                                <input type="radio" name="bladeMaterial" value="damascus-steel" required>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div>
+                                        <strong>Damascus Steel</strong>
+                                        <p style="margin: 0.2rem 0 0 0; font-size: 0.9rem; opacity: 0.8;">Beautiful folded pattern, premium quality</p>
+                                    </div>
+                                    <span class="price">+$100</span>
+                                </div>
+                            </label>
+                            <label class="material-option" data-price="200">
+                                <input type="radio" name="bladeMaterial" value="stainless-damascus" required>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div>
+                                        <strong>Stainless Damascus</strong>
+                                        <p style="margin: 0.2rem 0 0 0; font-size: 0.9rem; opacity: 0.8;">Corrosion resistant with Damascus pattern</p>
+                                    </div>
+                                    <span class="price">+$200</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Handle Material -->
+                    <div class="design-step">
+                        <h3 style="color: #C68346; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="step-number">3</span>
+                            Choose Handle Material
+                        </h3>
+                        <div class="handle-options" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem;">
+                            <label class="option-card" data-price="0">
+                                <input type="radio" name="handleMaterial" value="wood" required>
+                                <div class="card-content">
+                                    <h4>Hardwood</h4>
+                                    <p>Classic oak or walnut finish</p>
+                                    <span class="price">Included</span>
+                                </div>
+                            </label>
+                            <label class="option-card" data-price="30">
+                                <input type="radio" name="handleMaterial" value="bone" required>
+                                <div class="card-content">
+                                    <h4>Bone Handle</h4>
+                                    <p>Authentic bone grip with texture</p>
+                                    <span class="price">+$30</span>
+                                </div>
+                            </label>
+                            <label class="option-card" data-price="80">
+                                <input type="radio" name="handleMaterial" value="horn" required>
+                                <div class="card-content">
+                                    <h4>Horn Handle</h4>
+                                    <p>Premium buffalo horn finish</p>
+                                    <span class="price">+$80</span>
+                                </div>
+                            </label>
+                            <label class="option-card" data-price="150">
+                                <input type="radio" name="handleMaterial" value="ivory" required>
+                                <div class="card-content">
+                                    <h4>Synthetic Ivory</h4>
+                                    <p>Luxury synthetic ivory appearance</p>
+                                    <span class="price">+$150</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Blade Length -->
+                    <div class="design-step">
+                        <h3 style="color: #C68346; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="step-number">4</span>
+                            Blade Length
+                        </h3>
+                        <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px;">
+                            <label for="bladeLength" style="display: block; margin-bottom: 1rem; font-weight: bold;">
+                                Length: <span id="lengthDisplay">8</span> inches
+                            </label>
+                            <input type="range" id="bladeLength" name="bladeLength" min="6" max="12" value="8" 
+                                   style="width: 100%; margin-bottom: 1rem;" oninput="updateLength()">
+                            <div style="display: flex; justify-content: space-between; font-size: 0.9rem; opacity: 0.7;">
+                                <span>6"</span>
+                                <span>9"</span>
+                                <span>12"</span>
+                            </div>
+                            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #C68346;">
+                                Price adjustment: +$<span id="lengthPrice">0</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 5: Engravings -->
+                    <div class="design-step">
+                        <h3 style="color: #C68346; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="step-number">5</span>
+                            Personal Engravings (Optional)
+                        </h3>
+                        <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px;">
+                            <div style="display: grid; gap: 1rem;">
+                                <label>
+                                    <input type="checkbox" name="engraving" value="name" onchange="updateEngravings()"> 
+                                    <strong>Name Engraving</strong> (+$25)
+                                </label>
+                                <input type="text" id="nameEngraving" placeholder="Enter name to engrave" 
+                                       style="margin-left: 1.5rem; padding: 0.8rem; border-radius: 8px; border: 1px solid #444; background: #333; color: #fff;" disabled>
+                                
+                                <label>
+                                    <input type="checkbox" name="engraving" value="symbol" onchange="updateEngravings()"> 
+                                    <strong>Symbol/Logo Engraving</strong> (+$50)
+                                </label>
+                                <textarea id="symbolEngraving" placeholder="Describe your symbol or upload reference" 
+                                          style="margin-left: 1.5rem; padding: 0.8rem; border-radius: 8px; border: 1px solid #444; background: #333; color: #fff; resize: vertical;" disabled></textarea>
+                                
+                                <label>
+                                    <input type="checkbox" name="engraving" value="quote" onchange="updateEngravings()"> 
+                                    <strong>Custom Quote/Text</strong> (+$35)
+                                </label>
+                                <input type="text" id="quoteEngraving" placeholder="Enter your custom text (max 50 characters)" maxlength="50"
+                                       style="margin-left: 1.5rem; padding: 0.8rem; border-radius: 8px; border: 1px solid #444; background: #333; color: #fff;" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 6: Special Finishes -->
+                    <div class="design-step">
+                        <h3 style="color: #C68346; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="step-number">6</span>
+                            Special Finishes (Optional)
+                        </h3>
+                        <div style="display: grid; gap: 0.8rem;">
+                            <label class="finish-option">
+                                <input type="checkbox" name="finish" value="blackened" onchange="updatePrice()"> 
+                                <strong>Blackened Blade</strong> - Dark, tactical appearance (+$40)
+                            </label>
+                            <label class="finish-option">
+                                <input type="checkbox" name="finish" value="gold-accent" onchange="updatePrice()"> 
+                                <strong>Gold Accents</strong> - Luxury gold detailing (+$120)
+                            </label>
+                            <label class="finish-option">
+                                <input type="checkbox" name="finish" value="leather-sheath" onchange="updatePrice()"> 
+                                <strong>Premium Leather Sheath</strong> - Hand-crafted leather case (+$80)
+                            </label>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <!-- Preview & Summary -->
+            <div class="preview-panel" style="background: rgba(255,255,255,0.07); padding: 2rem; border-radius: 20px; position: sticky; top: 2rem; height: fit-content;">
+                <h3 style="color: #C68346; margin-bottom: 1.5rem; text-align: center;">Your Custom Design</h3>
+                
+                <!-- Visual Preview -->
+                <div class="dagger-preview" style="background: linear-gradient(145deg, #2a2a2a, #1a1a1a); padding: 2rem; border-radius: 15px; margin-bottom: 2rem; text-align: center; min-height: 200px; display: flex; align-items: center; justify-content: center;">
+                    <div style="font-size: 4rem; color: #C68346; filter: drop-shadow(0 0 10px rgba(198, 131, 70, 0.3));">
+                        ⚔️
+                    </div>
+                </div>
+
+                <!-- Design Summary -->
+                <div class="design-summary" style="margin-bottom: 2rem;">
+                    <h4 style="color: #C68346; margin-bottom: 1rem;">Design Summary</h4>
+                    <div id="summaryContent" style="font-size: 0.95rem; line-height: 1.6;">
+                        <p style="opacity: 0.7;">Select your options to see summary</p>
+                    </div>
+                </div>
+
+                <!-- Price Summary -->
+                <div class="price-summary" style="background: rgba(198, 131, 70, 0.1); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <span>Base Price:</span>
+                        <span>$299.99</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <span>Customizations:</span>
+                        <span>+$<span id="customizationTotal">0</span></span>
+                    </div>
+                    <div style="border-top: 1px solid #C68346; padding-top: 0.5rem; margin-top: 1rem;">
+                        <div style="display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: bold; color: #C68346;">
+                            <span>Total Price:</span>
+                            <span>$<span id="totalPrice">299.99</span></span>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 1rem; text-align: center;">
+                        *Estimated 2-4 weeks production time
+                    </p>
+                </div>
+
+                <!-- Action Buttons -->
+                <div style="display: grid; gap: 1rem;">
+                    <button type="button" class="cta-button" onclick="submitCustomDesign()" style="width: 100%;">
+                        <i class="fas fa-hammer"></i> Order Custom Dagger
+                    </button>
+                    <button type="button" onclick="saveDesign()" style="background: transparent; border: 2px solid #C68346; color: #C68346; padding: 0.8rem; border-radius: 8px; cursor: pointer; width: 100%;">
+                        <i class="fas fa-save"></i> Save Design
+                    </button>
+                </div>
+
+                <!-- Contact Note -->
+                <p style="font-size: 0.9rem; text-align: center; margin-top: 1.5rem; opacity: 0.8;">
+                    Have questions? <a href="contact.html" style="color: #C68346;">Contact our artisans</a>
+                </p>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="Privacy Policy.html">Privacy Policy</a>
+                <a href="Terms of Service.html">Terms of Service</a>
+                <a href="Shipping Info.html">Shipping Info</a>
+                <a href="Returns.html">Returns</a>
+            </div>
+            <div style="margin: 1.5rem 0;">
+                <a href="https://www.facebook.com/profile.php?id=61559348871898" target="_blank"
+                    style="margin:0 0.7rem;color:#C68346;font-size:1.7rem;vertical-align:middle;"><i
+                        class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/velari_forge?igsh=dDEzYzg5NXR1MzR2" target="_blank"
+                    style="margin:0 0.7rem;color:#C68346;font-size:1.7rem;vertical-align:middle;"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://tiktok.com" target="_blank"
+                    style="margin:0 0.7rem;color:#C68346;font-size:1.7rem;vertical-align:middle;"><i
+                        class="fab fa-tiktok"></i></a>
+            </div>
+            <p>&copy; 2025 Velari Forge. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Custom Design Styles -->
+    <style>
+        .custom-design-container {
+            animation: fadeIn 0.8s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .design-step {
+            background: rgba(255,255,255,0.03);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid #C68346;
+        }
+        
+        .step-number {
+            background: #C68346;
+            color: #000;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        
+        .option-card {
+            background: rgba(255,255,255,0.05);
+            border: 2px solid transparent;
+            border-radius: 12px;
+            padding: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            position: relative;
+        }
+        
+        .option-card:hover {
+            background: rgba(198, 131, 70, 0.1);
+            border-color: rgba(198, 131, 70, 0.3);
+        }
+        
+        .option-card input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+        
+        .option-card input[type="radio"]:checked + .card-content,
+        .option-card:has(input[type="radio"]:checked) .card-content {
+            border: 2px solid #C68346;
+            background: rgba(198, 131, 70, 0.2);
+        }
+        
+        .option-card:has(input[type="radio"]:checked) {
+            border-color: #C68346;
+            background: rgba(198, 131, 70, 0.1);
+        }
+        
+        .card-content {
+            border: 2px solid transparent;
+            border-radius: 8px;
+            padding: 0.8rem;
+            transition: all 0.3s ease;
+        }
+        
+        .card-content h4 {
+            margin: 0 0 0.5rem 0;
+            color: #C68346;
+            font-size: 1.1rem;
+        }
+        
+        .card-content p {
+            margin: 0 0 0.8rem 0;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .price {
+            color: #C68346;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+        
+        .material-option, .finish-option {
+            background: rgba(255,255,255,0.05);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+        }
+        
+        .material-option:hover, .finish-option:hover {
+            border-color: rgba(198, 131, 70, 0.3);
+            background: rgba(198, 131, 70, 0.1);
+        }
+        
+        .material-option:has(input:checked), .finish-option:has(input:checked) {
+            border-color: #C68346;
+            background: rgba(198, 131, 70, 0.15);
+        }
+        
+        .material-option input, .finish-option input {
+            margin-right: 0.8rem;
+            transform: scale(1.2);
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .custom-design-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .preview-panel {
+                position: static;
+                order: -1;
+            }
+            
+            .blade-options, .handle-options {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Smooth transitions */
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+            cursor: pointer;
+        }
+        
+        input[type="range"]::-webkit-slider-track {
+            background: rgba(198, 131, 70, 0.3);
+            height: 6px;
+            border-radius: 3px;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            background: #C68346;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            border: 2px solid #000;
+            cursor: pointer;
+        }
+        
+        input[type="range"]::-moz-range-track {
+            background: rgba(198, 131, 70, 0.3);
+            height: 6px;
+            border-radius: 3px;
+            border: none;
+        }
+        
+        input[type="range"]::-moz-range-thumb {
+            background: #C68346;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            border: 2px solid #000;
+            cursor: pointer;
+        }
+    </style>
+
+    <!-- JavaScript for Custom Design -->
+    <script src="script.js"></script>
+    <script>
+        let basePrice = 299.99;
+        let customizations = {
+            bladeType: 0,
+            bladeMaterial: 0,
+            handleMaterial: 0,
+            bladeLength: 0,
+            engravings: 0,
+            finishes: 0
+        };
+
+        function updateLength() {
+            const length = document.getElementById('bladeLength').value;
+            document.getElementById('lengthDisplay').textContent = length;
+            
+            // Price calculation: base 8", +$10 per inch above 8"
+            const lengthPrice = Math.max(0, (length - 8) * 10);
+            document.getElementById('lengthPrice').textContent = lengthPrice;
+            customizations.bladeLength = lengthPrice;
+            
+            updatePrice();
+            updateSummary();
+        }
+
+        function updateEngravings() {
+            const nameCheckbox = document.querySelector('input[name="engraving"][value="name"]');
+            const symbolCheckbox = document.querySelector('input[name="engraving"][value="symbol"]');
+            const quoteCheckbox = document.querySelector('input[name="engraving"][value="quote"]');
+            
+            document.getElementById('nameEngraving').disabled = !nameCheckbox.checked;
+            document.getElementById('symbolEngraving').disabled = !symbolCheckbox.checked;
+            document.getElementById('quoteEngraving').disabled = !quoteCheckbox.checked;
+            
+            let engravingTotal = 0;
+            if (nameCheckbox.checked) engravingTotal += 25;
+            if (symbolCheckbox.checked) engravingTotal += 50;
+            if (quoteCheckbox.checked) engravingTotal += 35;
+            
+            customizations.engravings = engravingTotal;
+            updatePrice();
+            updateSummary();
+        }
+
+        function updatePrice() {
+            // Calculate blade type price
+            const bladeTypeRadio = document.querySelector('input[name="bladeType"]:checked');
+            customizations.bladeType = bladeTypeRadio ? parseInt(bladeTypeRadio.closest('.option-card').dataset.price) : 0;
+            
+            // Calculate material prices
+            const bladeMaterialRadio = document.querySelector('input[name="bladeMaterial"]:checked');
+            customizations.bladeMaterial = bladeMaterialRadio ? parseInt(bladeMaterialRadio.closest('.material-option').dataset.price) : 0;
+            
+            const handleMaterialRadio = document.querySelector('input[name="handleMaterial"]:checked');
+            customizations.handleMaterial = handleMaterialRadio ? parseInt(handleMaterialRadio.closest('.option-card').dataset.price) : 0;
+            
+            // Calculate finish prices
+            const finishCheckboxes = document.querySelectorAll('input[name="finish"]:checked');
+            let finishTotal = 0;
+            finishCheckboxes.forEach(checkbox => {
+                switch(checkbox.value) {
+                    case 'blackened': finishTotal += 40; break;
+                    case 'gold-accent': finishTotal += 120; break;
+                    case 'leather-sheath': finishTotal += 80; break;
+                }
+            });
+            customizations.finishes = finishTotal;
+            
+            const customizationTotal = Object.values(customizations).reduce((sum, price) => sum + price, 0);
+            const totalPrice = basePrice + customizationTotal;
+            
+            document.getElementById('customizationTotal').textContent = customizationTotal.toFixed(0);
+            document.getElementById('totalPrice').textContent = totalPrice.toFixed(2);
+            
+            updateSummary();
+        }
+
+        function updateSummary() {
+            const summaryContent = document.getElementById('summaryContent');
+            let summary = '';
+            
+            const bladeType = document.querySelector('input[name="bladeType"]:checked');
+            const bladeMaterial = document.querySelector('input[name="bladeMaterial"]:checked');
+            const handleMaterial = document.querySelector('input[name="handleMaterial"]:checked');
+            const bladeLength = document.getElementById('bladeLength').value;
+            
+            if (bladeType) {
+                const bladeTypeText = bladeType.closest('.option-card').querySelector('h4').textContent;
+                summary += `<p><strong>Blade:</strong> ${bladeTypeText}</p>`;
+            }
+            
+            if (bladeMaterial) {
+                const materialText = bladeMaterial.closest('.material-option').querySelector('strong').textContent;
+                summary += `<p><strong>Material:</strong> ${materialText}</p>`;
+            }
+            
+            if (handleMaterial) {
+                const handleText = handleMaterial.closest('.option-card').querySelector('h4').textContent;
+                summary += `<p><strong>Handle:</strong> ${handleText}</p>`;
+            }
+            
+            summary += `<p><strong>Length:</strong> ${bladeLength} inches</p>`;
+            
+            // Engravings
+            const selectedEngravings = [];
+            const engravingCheckboxes = document.querySelectorAll('input[name="engraving"]:checked');
+            engravingCheckboxes.forEach(checkbox => {
+                switch(checkbox.value) {
+                    case 'name':
+                        const nameText = document.getElementById('nameEngraving').value;
+                        selectedEngravings.push(`Name: ${nameText || '[To be specified]'}`);
+                        break;
+                    case 'symbol':
+                        selectedEngravings.push('Custom Symbol/Logo');
+                        break;
+                    case 'quote':
+                        const quoteText = document.getElementById('quoteEngraving').value;
+                        selectedEngravings.push(`Quote: "${quoteText || '[To be specified]'}"`);
+                        break;
+                }
+            });
+            
+            if (selectedEngravings.length > 0) {
+                summary += `<p><strong>Engravings:</strong></p><ul style="margin: 0.5rem 0; padding-left: 1.5rem;">`;
+                selectedEngravings.forEach(engraving => {
+                    summary += `<li style="margin-bottom: 0.3rem;">${engraving}</li>`;
+                });
+                summary += `</ul>`;
+            }
+            
+            // Special Finishes
+            const selectedFinishes = [];
+            const finishCheckboxes = document.querySelectorAll('input[name="finish"]:checked');
+            finishCheckboxes.forEach(checkbox => {
+                switch(checkbox.value) {
+                    case 'blackened':
+                        selectedFinishes.push('Blackened Blade');
+                        break;
+                    case 'gold-accent':
+                        selectedFinishes.push('Gold Accents');
+                        break;
+                    case 'leather-sheath':
+                        selectedFinishes.push('Premium Leather Sheath');
+                        break;
+                }
+            });
+            
+            if (selectedFinishes.length > 0) {
+                summary += `<p><strong>Special Finishes:</strong></p><ul style="margin: 0.5rem 0; padding-left: 1.5rem;">`;
+                selectedFinishes.forEach(finish => {
+                    summary += `<li style="margin-bottom: 0.3rem;">${finish}</li>`;
+                });
+                summary += `</ul>`;
+            }
+            
+            if (summary === '') {
+                summary = '<p style="opacity: 0.7;">Select your options to see summary</p>';
+            }
+            
+            summaryContent.innerHTML = summary;
+        }
+
+        function submitCustomDesign() {
+            // Validate required fields
+            const bladeType = document.querySelector('input[name="bladeType"]:checked');
+            const bladeMaterial = document.querySelector('input[name="bladeMaterial"]:checked');
+            const handleMaterial = document.querySelector('input[name="handleMaterial"]:checked');
+            
+            if (!bladeType || !bladeMaterial || !handleMaterial) {
+                alert('Please complete all required selections (Blade Type, Blade Material, and Handle Material).');
+                return;
+            }
+            
+            // Gather all form data
+            const formData = {
+                bladeType: bladeType.value,
+                bladeMaterial: bladeMaterial.value,
+                handleMaterial: handleMaterial.value,
+                bladeLength: document.getElementById('bladeLength').value,
+                engravings: {},
+                finishes: [],
+                totalPrice: document.getElementById('totalPrice').textContent
+            };
+            
+            // Collect engraving data
+            const engravingCheckboxes = document.querySelectorAll('input[name="engraving"]:checked');
+            engravingCheckboxes.forEach(checkbox => {
+                switch(checkbox.value) {
+                    case 'name':
+                        formData.engravings.name = document.getElementById('nameEngraving').value;
+                        break;
+                    case 'symbol':
+                        formData.engravings.symbol = document.getElementById('symbolEngraving').value;
+                        break;
+                    case 'quote':
+                        formData.engravings.quote = document.getElementById('quoteEngraving').value;
+                        break;
+                }
+            });
+            
+            // Collect finish data
+            const finishCheckboxes = document.querySelectorAll('input[name="finish"]:checked');
+            finishCheckboxes.forEach(checkbox => {
+                formData.finishes.push(checkbox.value);
+            });
+            
+            // Store the design data in memory (since localStorage isn't available)
+            window.customDesignData = formData;
+            
+            // Show confirmation
+            const confirmationMessage = `
+                <div style="background: rgba(198, 131, 70, 0.1); border: 2px solid #C68346; padding: 2rem; border-radius: 15px; margin: 2rem 0; text-align: center;">
+                    <h3 style="color: #C68346; margin-bottom: 1rem;">🎉 Design Submitted Successfully!</h3>
+                    <p style="margin-bottom: 1rem;">Your custom dagger design has been received.</p>
+                    <p style="margin-bottom: 1rem;"><strong>Total Price: $${formData.totalPrice}</strong></p>
+                    <p style="font-size: 0.9rem; opacity: 0.8;">
+                        Our master craftsmen will review your design and contact you within 24 hours with production timeline and payment details.
+                    </p>
+                    <div style="margin-top: 1.5rem;">
+                        <button onclick="window.location.href='contact.html'" style="background: #C68346; color: #000; border: none; padding: 0.8rem 1.5rem; border-radius: 8px; cursor: pointer; margin-right: 1rem; font-weight: bold;">
+                            Contact Us
+                        </button>
+                        <button onclick="resetForm()" style="background: transparent; border: 2px solid #C68346; color: #C68346; padding: 0.8rem 1.5rem; border-radius: 8px; cursor: pointer;">
+                            Design Another
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            // Replace the form with confirmation message
+            document.querySelector('.custom-design-container').innerHTML = confirmationMessage;
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function saveDesign() {
+            // Validate that at least basic options are selected
+            const bladeType = document.querySelector('input[name="bladeType"]:checked');
+            const bladeMaterial = document.querySelector('input[name="bladeMaterial"]:checked');
+            const handleMaterial = document.querySelector('input[name="handleMaterial"]:checked');
+            
+            if (!bladeType || !bladeMaterial || !handleMaterial) {
+                alert('Please complete the basic selections before saving your design.');
+                return;
+            }
+            
+            // Create a design summary for saving
+            const designSummary = {
+                timestamp: new Date().toLocaleString(),
+                bladeType: bladeType.value,
+                bladeMaterial: bladeMaterial.value,
+                handleMaterial: handleMaterial.value,
+                bladeLength: document.getElementById('bladeLength').value,
+                totalPrice: document.getElementById('totalPrice').textContent,
+                engravings: [],
+                finishes: []
+            };
+            
+            // Collect selected engravings
+            const engravingCheckboxes = document.querySelectorAll('input[name="engraving"]:checked');
+            engravingCheckboxes.forEach(checkbox => {
+                designSummary.engravings.push(checkbox.value);
+            });
+            
+            // Collect selected finishes
+            const finishCheckboxes = document.querySelectorAll('input[name="finish"]:checked');
+            finishCheckboxes.forEach(checkbox => {
+                designSummary.finishes.push(checkbox.value);
+            });
+            
+            // Store in memory (simulate save functionality)
+            window.savedDesigns = window.savedDesigns || [];
+            window.savedDesigns.push(designSummary);
+            
+            // Show save confirmation
+            const saveButton = event.target;
+            const originalText = saveButton.innerHTML;
+            saveButton.innerHTML = '<i class="fas fa-check"></i> Saved!';
+            saveButton.style.background = '#4CAF50';
+            saveButton.style.borderColor = '#4CAF50';
+            saveButton.style.color = '#fff';
+            
+            setTimeout(() => {
+                saveButton.innerHTML = originalText;
+                saveButton.style.background = 'transparent';
+                saveButton.style.borderColor = '#C68346';
+                saveButton.style.color = '#C68346';
+            }, 2000);
+            
+            // Show temporary notification
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #4CAF50;
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 8px;
+                z-index: 1000;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+                animation: slideIn 0.3s ease-out;
+            `;
+            notification.innerHTML = '<i class="fas fa-save"></i> Design saved successfully!';
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        function resetForm() {
+            // Reset all form inputs
+            document.getElementById('customDesignForm').reset();
+            
+            // Reset disabled states
+            document.getElementById('nameEngraving').disabled = true;
+            document.getElementById('symbolEngraving').disabled = true;
+            document.getElementById('quoteEngraving').disabled = true;
+            
+            // Reset length display
+            document.getElementById('lengthDisplay').textContent = '8';
+            document.getElementById('lengthPrice').textContent = '0';
+            
+            // Reset customizations object
+            customizations = {
+                bladeType: 0,
+                bladeMaterial: 0,
+                handleMaterial: 0,
+                bladeLength: 0,
+                engravings: 0,
+                finishes: 0
+            };
+            
+            // Reset price display
+            document.getElementById('customizationTotal').textContent = '0';
+            document.getElementById('totalPrice').textContent = '299.99';
+            
+            // Reset summary
+            document.getElementById('summaryContent').innerHTML = '<p style="opacity: 0.7;">Select your options to see summary</p>';
+        }
+
+        // Event listeners for real-time updates
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add change listeners to all radio buttons and checkboxes
+            const radioButtons = document.querySelectorAll('input[type="radio"]');
+            radioButtons.forEach(radio => {
+                radio.addEventListener('change', updatePrice);
+            });
+            
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    if (this.name === 'engraving') {
+                        updateEngravings();
+                    } else {
+                        updatePrice();
+                    }
+                });
+            });
+            
+            // Initialize length slider
+            document.getElementById('bladeLength').addEventListener('input', updateLength);
+            
+            // Add input listeners for engraving text fields
+            document.getElementById('nameEngraving').addEventListener('input', updateSummary);
+            document.getElementById('quoteEngraving').addEventListener('input', updateSummary);
+            document.getElementById('symbolEngraving').addEventListener('input', updateSummary);
+        });
+
+        // Add CSS animation for notification
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+
+</body>
+</html>

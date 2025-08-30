@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - VelariForge</title>
+    <meta name="description"
+        content="Contact VelariForge for questions about our premium daggers, orders, or support. Reach out via our form or visit our address.">
+    <meta name="keywords" content="contact VelariForge, daggers support, knife shop contact, customer service">
+    <meta name="author" content="VelariForge">
+    <meta property="og:title" content="Contact Us - VelariForge">
+    <meta property="og:description"
+        content="Contact VelariForge for questions about our premium daggers, orders, or support. Reach out via our form or visit our address.">
+    <meta property="og:image" content="/image6.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://velariforge.com/contact.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contact Us - VelariForge">
+    <meta name="twitter:description"
+        content="Contact VelariForge for questions about our premium daggers, orders, or support. Reach out via our form or visit our address.">
+    <meta name="twitter:image" content="/image6.jpg">
+    <link rel="icon" type="image/png" href="velariforge.png">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav">
+           <div style="display:flex;align-items:center;width:100%;position:relative;">
+                <span class="mobile-list-icon" id="mobileMenuIcon" style="margin-right:0.7rem; background:none;">
+                    <svg viewBox="0 0 32 32" width="36" height="36" style="display:block;">
+                        <path d="M6 9h20M6 16h20M6 23h20" stroke="#C68346" stroke-width="3" stroke-linecap="round" />
+                    </svg>
+                </span>
+                <a href="index.html" class="logo"
+                    style="display:flex;align-items:center;justify-content:center;gap:0.5rem;width:100%;">
+                    <img src="V-removebg-preview.png" alt="velari_forge logo"
+                        style="width:40px;height:40px;object-fit:contain;" />
+                    <span style="font-size:1.5rem;color:#C68346;font-weight:bold;">Velari Forge</span>
+                </a>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="product.html">Products</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="products" style="min-height:60vh;">
+        <h2 class="section-title">Contact Us</h2>
+        <div
+            style="max-width:500px;margin:2rem auto;background:rgba(255,255,255,0.07);padding:2rem 2.5rem;border-radius:15px;color:#fff;">
+            <form id="contactForm" autocomplete="off" novalidate>
+                <div class="form-group">
+                    <label for="contactName">Name</label>
+                    <input type="text" id="contactName" required placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <label for="contactEmail">Email</label>
+                    <input type="email" id="contactEmail" required placeholder="Your Email">
+                </div>
+                <div class="form-group">
+                    <label for="contactMessage">Message</label>
+                    <textarea id="contactMessage" rows="4" required placeholder="How can we help you?"></textarea>
+                </div>
+                <div id="contactError"
+                    style="display:none;color:#ff4444;margin-bottom:1rem;text-align:center;font-weight:bold;"></div>
+                <button type="submit" class="submit-order">Send Message</button>
+            </form>
+            <div id="contactSuccess"
+                style="display:none;color:#C68346;margin-top:1.5rem;text-align:center;font-weight:bold;">Thank you for
+                contacting us! We'll get back to you soon.</div>
+        </div>
+        <div style="max-width:500px;margin:2rem auto 0 auto;text-align:center;">
+            <h3 style="color:#C68346;margin-bottom:0.7rem;">Our Address</h3>
+            <p style="color:#fff;opacity:0.85;margin-bottom:1.2rem;">123 Blade Street, Dagger City, Country</p>
+            <iframe src="https://www.google.com/maps?q=New+York,+NY,+USA&output=embed" width="100%" height="220"
+                style="border:0;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.12);" allowfullscreen=""
+                loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="Privacy Policy.html">Privacy Policy</a>
+                <a href="Terms of Service.html">Terms of Service</a>
+                <a href="Shipping Info.html">Shipping Info</a>
+                <a href="Returns.html">Returns</a>
+            </div>
+            <div style="margin: 1.5rem 0;">
+                <a href="https://www.facebook.com/profile.php?id=61559348871898" target="_blank"
+                    style="margin:0 0.7rem;color:#C68346;font-size:1.7rem;vertical-align:middle;"><i
+                        class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/velari_forge?igsh=dDEzYzg5NXR1MzR2" target="_blank"
+                    style="margin:0 0.7rem;color:#C68346;font-size:1.7rem;vertical-align:middle;"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://tiktok.com" target="_blank"
+                    style="margin:0 0.7rem;color:#C68346;font-size:1.7rem;vertical-align:middle;"><i
+                        class="fab fa-tiktok"></i></a>
+            </div>
+            <p>&copy; 2025 Velari Forge. All rights reserved. </p>
+        </div>
+    </footer>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            var name = document.getElementById('contactName').value.trim();
+            var email = document.getElementById('contactEmail').value.trim();
+            var message = document.getElementById('contactMessage').value.trim();
+            var errorDiv = document.getElementById('contactError');
+            errorDiv.style.display = 'none';
+            errorDiv.textContent = '';
+            // Validation
+            if (!name || !email || !message) {
+                errorDiv.textContent = 'Please fill in all fields.';
+                errorDiv.style.display = 'block';
+                return;
+            }
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                errorDiv.textContent = 'Please enter a valid email address.';
+                errorDiv.style.display = 'block';
+                return;
+            }
+            if (message.length < 5) {
+                errorDiv.textContent = 'Message should be at least 5 characters.';
+                errorDiv.style.display = 'block';
+                return;
+            }
+            document.getElementById('contactForm').style.display = 'none';
+            document.getElementById('contactSuccess').style.display = 'block';
+        });
+    </script>
+    <script src="/script.js"></script>
+</body>
+
+</html>
